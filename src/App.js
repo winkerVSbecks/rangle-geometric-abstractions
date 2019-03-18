@@ -1,28 +1,20 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { ColourSelector } from './ColourSelector';
+import { GridSizeSelector } from './GridSizeSelector';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
-}
+export const App = () => {
+  const [colour, setColour] = useState('rgba(212, 69, 39, 0.5)');
+  const [gridSize, setGridSize] = useState(6);
 
-export default App;
+  return (
+    <div className="flex pa3">
+      <div className="w-60">canvas</div>
+      <ColourSelector
+        className="mt5 w-40"
+        value={colour}
+        onChange={setColour}
+      />
+      <GridSizeSelector value={gridSize} onChange={setGridSize} />
+    </div>
+  );
+};
