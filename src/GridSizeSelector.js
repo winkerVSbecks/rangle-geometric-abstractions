@@ -21,6 +21,20 @@ const GridOptionInput = styled.input.attrs({
   }
 `;
 
+const GridOption = ({ size, value, onChange }) => (
+  <div>
+    <GridOptionInput
+      id={`${size}x${size}`}
+      checked={value === size}
+      onChange={() => onChange(size)}
+      value={size}
+    />
+    <GridOptionLabel
+      htmlFor={`${size}x${size}`}
+    >{`${size}x${size}`}</GridOptionLabel>
+  </div>
+);
+
 export const GridSizeSelector = ({ value, onChange, className }) => (
   <fieldset className={`db bn pa0 ma0 sans-serif bg-white ${className}`}>
     <Heading as="legend" className="f4 b mb2">
@@ -28,25 +42,9 @@ export const GridSizeSelector = ({ value, onChange, className }) => (
     </Heading>
 
     <div className="flex">
-      <div>
-        <GridOptionInput
-          id="6x6"
-          checked={value === 6}
-          onChange={() => onChange(6)}
-          value={6}
-        />
-        <GridOptionLabel htmlFor="6x6">6x6</GridOptionLabel>
-      </div>
-
-      <div>
-        <GridOptionInput
-          id="12x12"
-          checked={value === 12}
-          onChange={() => onChange(12)}
-          value={12}
-        />
-        <GridOptionLabel htmlFor="12x12">12x12</GridOptionLabel>
-      </div>
+      <GridOption size={6} value={value} onChange={onChange} />
+      <GridOption size={9} value={value} onChange={onChange} />
+      <GridOption size={12} value={value} onChange={onChange} />
     </div>
   </fieldset>
 );

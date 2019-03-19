@@ -5,7 +5,7 @@ const p2 = (x, y, s) => ['M', x * s + s, y * s, 'v', s, 'h', -s, 'z'].join(' ');
 
 export const MeshGrid = ({ size }) => {
   const canvasSize = 960;
-  const res = canvasSize / size;
+  const tileSize = canvasSize / size;
 
   return (
     <div className="relative ma0 w-100">
@@ -24,11 +24,11 @@ export const MeshGrid = ({ size }) => {
             return (
               <g key={idx} fill="#fff">
                 <path
-                  d={p1(x, y, res)}
+                  d={p1(x, y, tileSize)}
                   onClick={() => console.log({ idx, p: 1 })}
                 />
                 <path
-                  d={p2(x, y, res)}
+                  d={p2(x, y, tileSize)}
                   onClick={() => console.log({ idx, p: 2 })}
                 />
               </g>

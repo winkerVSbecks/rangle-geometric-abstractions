@@ -6,7 +6,7 @@ import { MeshGrid } from './MeshGrid';
 
 export const App = () => {
   const [colour, setColour] = useState('rgba(212, 69, 39, 0.5)');
-  const [gridSize, setGridSize] = useState(6);
+  const [gridSize, setGridSize] = useState(9);
 
   return (
     <div className="flex ph3">
