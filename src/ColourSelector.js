@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Heading } from './Primitives';
 
 const colours = {
   red: [
@@ -76,16 +77,11 @@ const colours = {
   ],
 };
 
-const ShadeLabel = styled.label`
-  box-sizing: border-box;
-  outline-color: #000;
-  outline-style: solid;
-  outline-width: 0px;
-  height: ${props => props.size};
-  background-color: ${props => props.value};
-`;
-
-const ShadeInput = styled.input`
+const ShadeInput = styled.input.attrs({
+  type: 'radio',
+  name: 'colour',
+  className: 'input-reset',
+})`
   box-sizing: border-box;
   outline-color: #000;
   outline-style: solid;
@@ -102,9 +98,6 @@ const ShadeInput = styled.input`
 const Shade = ({ name, value, size = 1, selected, onChange }) => (
   <React.Fragment>
     <ShadeInput
-      type="radio"
-      name="colour"
-      className="input-reset"
       value={value}
       id={name.replace(/\s/g, '-')}
       size={size}
@@ -146,7 +139,9 @@ const Swatch = ({ shades, name, labelColour, onChange, selectedValue }) => (
 
 export const ColourSelector = ({ value, onChange, className }) => (
   <fieldset className={`db bn pa0 ma0 sans-serif bg-white ${className}`}>
-    <legend className="f3 b mb3">Colour</legend>
+    <Heading as="legend" className="f4 b mb2">
+      Colour
+    </Heading>
     <div className="flex mb3">
       <Swatch
         name="Red"
