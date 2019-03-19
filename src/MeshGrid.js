@@ -1,8 +1,11 @@
 import React from 'react';
 
+const p1 = (x, y, s) => ['M', x * s, y * s + s, 'v', -s, 'h', s, 'z'].join(' ');
+const p2 = (x, y, s) => ['M', x * s + s, y * s, 'v', s, 'h', -s, 'z'].join(' ');
+
 export const MeshGrid = ({ size }) => {
-  const s = 960;
-  const res = 960 / size;
+  const canvasSize = 960;
+  const res = canvasSize / size;
 
   return (
     <div className="relative ma0 w-100">
@@ -15,16 +18,19 @@ export const MeshGrid = ({ size }) => {
           strokeLinejoin="round"
         >
           {Array.from(Array(size * size).keys()).map(idx => {
-            const x = (idx % size) * res;
-            const y = Math.floor(idx / size) * res;
-
-            const p1 = ['M', x, y + res, 'v', -res, 'h', res, 'z'].join(' ');
-            const p2 = ['M', x + res, y, 'v', res, 'h', -res, 'z'].join(' ');
+            const x = idx % size;
+            const y = Math.floor(idx / size);
 
             return (
               <g key={idx} fill="#fff">
-                <path d={p1} onClick={() => console.log({ idx, p: 1 })} />
-                <path d={p2} onClick={() => console.log({ idx, p: 2 })} />
+                <path
+                  d={p1(x, y, res)}
+                  onClick={() => console.log({ idx, p: 1 })}
+                />
+                <path
+                  d={p2(x, y, res)}
+                  onClick={() => console.log({ idx, p: 2 })}
+                />
               </g>
             );
           })}
