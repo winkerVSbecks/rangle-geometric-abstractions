@@ -14,10 +14,19 @@ const GridOptionLabel = styled.label.attrs({
 
 const GridOptionInput = styled.input.attrs({
   type: 'radio',
+  name: 'grid-size',
   className: 'clip',
 })`
+  &:checked:focus + ${GridOptionLabel}, &:checked:active + ${GridOptionLabel} {
+    border-color: #2761d4;
+  }
+
   &:checked + ${GridOptionLabel} {
     border-color: #000;
+  }
+
+  &:focus + ${GridOptionLabel}, &:active + ${GridOptionLabel} {
+    border-color: #2761d4;
   }
 `;
 

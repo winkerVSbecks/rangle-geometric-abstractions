@@ -36,6 +36,9 @@ const initialState12x12 = [
   c, c, b, b, b, b, b, b, b, b, b, b, b, b, b, b, b, b, b, b, b, b, c, c,
   c, c, b, b, b, b, b, b, b, b, b, b, b, b, b, b, b, b, b, b, b, b, c, c,
   c, c, b, b, b, b, b, b, b, b, b, b, b, b, b, b, b, b, b, b, b, b, c, c,
+  c, c, b, b, b, b, b, b, b, b, b, b, b, b, b, b, b, b, b, b, b, b, c, c,
+  c, c, b, b, b, b, b, b, b, b, b, b, b, b, b, b, b, b, b, b, b, b, c, c,
+  c, c, b, b, b, b, b, b, b, b, b, b, b, b, b, b, b, b, b, b, b, b, c, c,
   c, c, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, c, c,
   c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c, c,
 ];
@@ -46,15 +49,35 @@ const initialState = {
   12: initialState12x12,
 };
 
-export function useCanvas(size) {
-  const [canvas, setCanvas] = useState(initialState[size]);
+function splitEvery(size, array) {
+  if (!array.length) {
+    return [];
+  }
+  const head = array.slice(0, size);
+  const tail = array.slice(size);
 
-  const reset = (newSize = size) => {
-    setCanvas(initialState[newSize]);
+  return [head, ...splitEvery(size, tail)];
+}
+
+export function useCanvas(size) {
+  const [gridSize, setGridSize] = useState(size);
+  const [canvas, setCanvas] = useState(splitEvery(2, initialState[gridSize]));
+
+  const resizeCanvas = newSize => {
+    setGridSize(newSize);
+    setCanvas(splitEvery(2, initialState[newSize]));
   };
 
-  const toggleIndex = (idxToUpdate, colour) =>
-    canvas.map((c, idx) => (idx === idxToUpdate ? colour : c));
+  const toggleIndex = (idxToUpdate, p, colour) => {
+    const nextCanvas = canvas.map((tile, idx) => {
+      if (idx === idxToUpdate) {
+        tile[p] = colour;
+      }
 
-  return [canvas, reset, toggleIndex];
+      return tile;
+    });
+    setCanvas(nextCanvas);
+  };
+
+  return [canvas, gridSize, toggleIndex, resizeCanvas];
 }

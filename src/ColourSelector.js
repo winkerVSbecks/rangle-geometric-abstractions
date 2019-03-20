@@ -19,6 +19,11 @@ const ShadeInput = styled.input.attrs({
     outline-width: 2px;
     z-index: 1;
   }
+
+  &:active,
+  &:focus {
+    outline-color: #2761d4;
+  }
 `;
 
 const Shade = ({ name, value, size = 1, selected, onChange }) => (
