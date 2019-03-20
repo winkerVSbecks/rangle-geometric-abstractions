@@ -7,17 +7,14 @@ export default {
     {
       name: 'red 75 percent',
       value: 'rgba(212, 69, 39, 0.75)',
-      shades: [0.75, 0.5, 0.25],
     },
     {
       name: 'red 50 percent',
       value: 'rgba(212, 69, 39, 0.5)',
-      shades: [0.75, 0.5, 0.25],
     },
     {
       name: 'red 25 percent',
       value: 'rgba(212, 69, 39, 0.25)',
-      shades: [0.75, 0.5, 0.25],
     },
   ],
   black: [
