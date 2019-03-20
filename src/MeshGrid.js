@@ -1,8 +1,7 @@
 import React from 'react';
 import { generateTiles, CANVAS_SIZE } from './tiles';
-
-const p1 = (x, y, s) => ['M', x * s, y * s + s, 'v', -s, 'h', s, 'z'].join(' ');
-const p2 = (x, y, s) => ['M', x * s + s, y * s, 'v', s, 'h', -s, 'z'].join(' ');
+import { Button } from './Primitives';
+import { svgDataUri } from './tiles';
 
 export const MeshGrid = ({ size, canvas, colour, toggleIndex, debug }) => {
   const tileSize = CANVAS_SIZE / size;
@@ -39,8 +38,16 @@ export const MeshGrid = ({ size, canvas, colour, toggleIndex, debug }) => {
             ))}
         </svg>
       </div>
-      <figcaption className="gray sans-serif f7 fw5 mt2">
-        {size}x{size} Rangle mesh grid.
+      <figcaption className="gray sans-serif f7 fw5 mt2 flex">
+        <span className="flex-auto mr2">
+          {size}x{size} Rangle mesh grid.
+        </span>
+        <Button
+          download="geometric-abstraction.svg"
+          href={svgDataUri(canvas, size)}
+        >
+          Download SVG
+        </Button>
       </figcaption>
     </div>
   );

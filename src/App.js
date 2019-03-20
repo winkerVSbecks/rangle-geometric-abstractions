@@ -12,8 +12,8 @@ export const App = () => {
 
   return (
     <div className="flex ph3">
-      <div className="vh-100 w-60 mr4 flex flex-column">
-        <div className="w-50 center flex-auto flex flex-column items-center justify-center">
+      <div className="vh-100 flex-auto mr4 flex flex-column">
+        <div className="w-50-l w-100 center flex-auto flex flex-column items-center justify-center">
           <Heading className="pt2 bt bw1 b--moon-gray mb5 flex">
             <span className="flex-auto">Mesh</span>
             <Toggle
@@ -32,7 +32,7 @@ export const App = () => {
       </div>
 
       <ControlPanel
-        className="vh-100 w-40 pt4"
+        className="vh-100 w-40-l w-30 pt4"
         colour={colour}
         setColour={setColour}
         canvas={canvas}

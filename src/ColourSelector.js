@@ -50,7 +50,7 @@ const shadeHeight = (shades, idx) => {
 const Swatch = ({ shades, name, labelColour, onChange, selectedValue }) => (
   <div className="flex-auto flex flex-column sans-serif relative">
     <span
-      className="f6 ttc fw4 absolute top-1 left-1 z-2"
+      className="f6 ttc fw4 absolute top-1 left-1 z-2 dn di-l"
       aria-hidden="true"
       style={{ color: labelColour }}
     >

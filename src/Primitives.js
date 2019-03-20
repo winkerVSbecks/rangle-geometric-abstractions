@@ -7,8 +7,7 @@ export const Heading = styled.h1.attrs({
 })``;
 
 export const Button = styled.a.attrs({
-  className:
-    'no-underline f7 grow sans-serif pa3 lh-copy bn dib white bg-dark-gray ttu tracked tc',
+  className: 'link dim f7 sans-serif pv1 ph2 bn dib white bg-dark-gray tc',
 })``;
 
 const ToggleIndicator = posed.circle({

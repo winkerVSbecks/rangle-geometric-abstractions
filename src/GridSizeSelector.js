@@ -4,7 +4,7 @@ import { Heading } from './Primitives';
 
 const GridOptionLabel = styled.label.attrs({
   className:
-    'db w3 h3 pa3 ba mr3 f6 fw4 lh-solid sans-serif flex items-center justify-center',
+    'db w3 h3-l pa2 pa3-l ba f6 fw4 lh-solid sans-serif flex items-center justify-center',
 })`
   color: #262626;
   border-color: #ccc;
@@ -30,7 +30,7 @@ const GridOptionInput = styled.input.attrs({
   }
 `;
 
-const GridOption = ({ size, value, onChange }) => (
+const GridOption = ({ size, value, onChange, className }) => (
   <div>
     <GridOptionInput
       id={`${size}x${size}`}
@@ -39,6 +39,7 @@ const GridOption = ({ size, value, onChange }) => (
       value={size}
     />
     <GridOptionLabel
+      className={className}
       htmlFor={`${size}x${size}`}
     >{`${size}x${size}`}</GridOptionLabel>
   </div>
@@ -50,10 +51,10 @@ export const GridSizeSelector = ({ value, onChange, className }) => (
       Grid Size
     </Heading>
 
-    <div className="flex">
-      <GridOption size={6} value={value} onChange={onChange} />
-      <GridOption size={9} value={value} onChange={onChange} />
-      <GridOption size={12} value={value} onChange={onChange} />
+    <div className="flex flex-wrap space-between nt2 nl2">
+      <GridOption className="ma2" size={6} value={value} onChange={onChange} />
+      <GridOption className="ma2" size={9} value={value} onChange={onChange} />
+      <GridOption className="ma2" size={12} value={value} onChange={onChange} />
     </div>
   </fieldset>
 );
