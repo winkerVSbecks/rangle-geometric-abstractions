@@ -11,7 +11,7 @@ export const App = () => {
   const [showDebugGrid, setDebugGrid] = useState(true);
 
   return (
-    <div className="flex ph3">
+    <div className="flex ph2 ph3-ns">
       <div className="vh-100 flex-auto mr4 flex flex-column">
         <div className="w-50-l w-100 center flex-auto flex flex-column items-center justify-center">
           <Heading className="pt2 bt bw1 b--moon-gray mb5 flex">

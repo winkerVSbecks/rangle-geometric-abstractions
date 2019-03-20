@@ -38,11 +38,10 @@ export const MeshGrid = ({ size, canvas, colour, toggleIndex, debug }) => {
             ))}
         </svg>
       </div>
-      <figcaption className="gray sans-serif f7 fw5 mt2 flex">
-        <span className="flex-auto mr2">
-          {size}x{size} Rangle mesh grid.
-        </span>
+      <figcaption className="gray sans-serif f7 fw5 mt2 flex items-center">
+        {size}x{size} Rangle mesh grid.
         <Button
+          className="ml-auto"
           download="geometric-abstraction.svg"
           href={svgDataUri(canvas, size)}
         >
