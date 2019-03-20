@@ -6,14 +6,18 @@ import colours from './colours';
 const ShadeInput = styled.input.attrs({
   type: 'radio',
   name: 'colour',
-  className: 'input-reset',
+  className: 'input-reset bn br0 db w-100',
 })`
   box-sizing: border-box;
   outline-color: #000;
   outline-style: solid;
   outline-width: 0px;
-  height: ${props => props.size};
+  height: ${props => props.size * 0.5}rem;
   background-color: ${props => props.value};
+
+  @media screen and (min-width: 30em) {
+    height: ${props => props.size}rem;
+  }
 
   &:checked {
     outline-width: 2px;
@@ -42,9 +46,9 @@ const Shade = ({ name, value, size = 1, selected, onChange }) => (
 );
 
 const shadeHeight = (shades, idx) => {
-  if (shades.length === 1 && idx === 0) return '14rem';
-  if (shades.length > 1 && idx === 0) return '8rem';
-  return '2rem';
+  if (shades.length === 1 && idx === 0) return 14;
+  if (shades.length > 1 && idx === 0) return 8;
+  return 2;
 };
 
 const Swatch = ({ shades, name, labelColour, onChange, selectedValue }) => (
