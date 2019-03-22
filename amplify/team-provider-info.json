@@ -1,0 +1,14 @@
+{
+    "prod": {
+        "awscloudformation": {
+            "AuthRoleName": "geometricabs-20190322110717-authRole",
+            "UnauthRoleArn": "arn:aws:iam::067393457070:role/geometricabs-20190322110717-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::067393457070:role/geometricabs-20190322110717-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "geometricabs-20190322110717-deployment",
+            "UnauthRoleName": "geometricabs-20190322110717-unauthRole",
+            "StackName": "geometricabs-20190322110717",
+            "StackId": "arn:aws:cloudformation:us-east-1:067393457070:stack/geometricabs-20190322110717/2f29bec0-4cb4-11e9-aa4e-121b5b00f9e8"
+        }
+    }
+}
