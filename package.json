@@ -4,6 +4,9 @@
   "private": true,
   "dependencies": {
     "@aws-amplify/cli": "^1.1.8",
+    "aws-amplify": "^1.1.22",
+    "aws-amplify-react": "^2.3.2",
+    "aws-sdk": "^2.426.0",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-pose": "^4.0.8",

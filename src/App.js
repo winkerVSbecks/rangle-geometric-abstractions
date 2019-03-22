@@ -1,44 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
+import Amplify from 'aws-amplify';
+import awsmobile from './aws-exports';
+import { withAuthenticator } from 'aws-amplify-react';
+import { GeometricAbstractionsCreator } from './GeometricAbstractionsCreator';
+import { Navigation } from './Navigation';
 
-import { Heading, Toggle } from './Primitives';
-import { ControlPanel } from './ControlPanel';
-import { MeshGrid } from './MeshGrid';
-import { useCanvas } from './useCanvas';
+Amplify.configure(awsmobile);
 
-export const App = () => {
-  const [colour, setColour] = useState('rgba(212, 69, 39, 0.5)');
-  const [canvas, gridSize, toggleIndex, resizeCanvas] = useCanvas(9);
-  const [showDebugGrid, setDebugGrid] = useState(true);
+const App = () => (
+  <div>
+    <Navigation />
+    <GeometricAbstractionsCreator />
+  </div>
+);
 
-  return (
-    <div className="flex ph2 ph3-ns">
-      <div className="vh-100 flex-auto mr4 mt6 mt0-ns flex-ns items-center-ns">
-        <div className="w-50-l w-80-m w-100 center flex flex-column items-center justify-center">
-          <Heading className="pt2 bt bw1 b--moon-gray mb5 flex">
-            <span className="flex-auto">Mesh</span>
-            <Toggle
-              enabled={showDebugGrid}
-              onClick={() => setDebugGrid(!showDebugGrid)}
-            />
-          </Heading>
-          <MeshGrid
-            size={gridSize}
-            canvas={canvas}
-            colour={colour}
-            toggleIndex={toggleIndex}
-            debug={showDebugGrid}
-          />
-        </div>
-      </div>
+// export const AppWithAuth = withAuthenticator(App, true);
 
-      <ControlPanel
-        className="vh-100 w-40-l w-30 pt4"
-        colour={colour}
-        setColour={setColour}
-        canvas={canvas}
-        gridSize={gridSize}
-        setGridSize={resizeCanvas}
-      />
-    </div>
-  );
-};
+export default withAuthenticator(App, true, [], null, {});

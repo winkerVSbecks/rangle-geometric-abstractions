@@ -9,6 +9,11 @@
             "UnauthRoleName": "geometricabs-20190322110717-unauthRole",
             "StackName": "geometricabs-20190322110717",
             "StackId": "arn:aws:cloudformation:us-east-1:067393457070:stack/geometricabs-20190322110717/2f29bec0-4cb4-11e9-aa4e-121b5b00f9e8"
+        },
+        "categories": {
+            "auth": {
+                "cognito81db314e": {}
+            }
         }
     }
 }
