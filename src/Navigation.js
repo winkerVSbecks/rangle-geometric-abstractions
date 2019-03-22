@@ -1,50 +1,29 @@
 import React from 'react';
 
-export const Navigation = () => (
-  <nav className="db dt-l w-100 border-box pa3 ph5-l">
-    <a
-      className="db dtc-l v-mid mid-gray link dim w-100 w-25-l tc tl-l mb2 mb0-l"
-      href="#"
-      title="Home"
-    >
+export const Navigation = ({ signedIn, signOut }) => (
+  <nav
+    className="flex justify-between bb b--white-10 sans-serif"
+    style={{ backgroundColor: '#262626' }}
+  >
+    <div className="flex items-center pa3">
       <img
-        src="http://tachyons.io/img/logo.jpg"
+        src="/geometric-abstractions.png"
         className="dib w2 h2 br-100"
         alt="Site Name"
       />
-    </a>
-    <div className="db dtc-l v-mid w-100 w-75-l tc tr-l">
-      <a
-        className="link dim dark-gray f6 f5-l dib mr3 mr4-l"
-        href="#"
-        title="Home"
-      >
-        Home
-      </a>
-      <a
-        className="link dim dark-gray f6 f5-l dib mr3 mr4-l"
-        href="#"
-        title="How it Works"
-      >
-        How it Works
-      </a>
-      <a
-        className="link dim dark-gray f6 f5-l dib mr3 mr4-l"
-        href="#"
-        title="Blog"
-      >
-        Blog
-      </a>
-      <a
-        className="link dim dark-gray f6 f5-l dib mr3 mr4-l"
-        href="#"
-        title="Press"
-      >
-        Press
-      </a>
-      <a className="link dim dark-gray f6 f5-l dib" href="#" title="Contact">
-        Contact
-      </a>
+    </div>
+    <div className="flex-grow pa3 flex items-center">
+      <button className="bg-transparent bn f6 link dib white dim mr3 mr4-ns">
+        Gallery
+      </button>
+      {signedIn && (
+        <button
+          className="bg-transparent f6 dib white dim pv2 ph4 br0 ba b--white-60"
+          onClick={signOut}
+        >
+          Sign Out
+        </button>
+      )}
     </div>
   </nav>
 );
