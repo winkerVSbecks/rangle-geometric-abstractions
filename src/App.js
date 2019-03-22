@@ -11,7 +11,7 @@ Amplify.configure(awsmobile);
 
 const App = props => (
   <React.Fragment>
-    <SkipNavLink />
+    <SkipNavLink className="link sans-serif dark-gray" />
     <div>
       {console.log(props)}
       <Navigation
