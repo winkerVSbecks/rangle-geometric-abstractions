@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Navigation = ({ signedIn, signOut }) => (
+export const Navigation = ({ signedIn, signOut, goTo, toggleRoute }) => (
   <nav
     className="flex justify-between bb b--white-10 sans-serif"
     style={{ backgroundColor: '#262626' }}
@@ -13,8 +13,11 @@ export const Navigation = ({ signedIn, signOut }) => (
       />
     </div>
     <div className="flex-grow pa3 flex items-center">
-      <button className="bg-transparent bn f6 link dib white dim mr3 mr4-ns">
-        Gallery
+      <button
+        className="bg-transparent bn f6 link dib white dim mr3 mr4-ns"
+        onClick={toggleRoute}
+      >
+        {goTo}
       </button>
       {signedIn && (
         <button

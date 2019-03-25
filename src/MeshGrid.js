@@ -2,10 +2,20 @@ import React from 'react';
 import { generateTiles, CANVAS_SIZE } from './tiles';
 import { Button } from './Primitives';
 import { svgDataUri } from './tiles';
+import { useUploadFile } from './useUploadFile';
+
+const buttonLabel = status => {
+  if (status === 'IN_PROGRESS') return 'Uploading…';
+  if (status === 'COMPLETED') return 'Done!';
+  if (status === 'FAILED') return 'Error, Try again';
+
+  return 'Save SVG';
+};
 
 export const MeshGrid = ({ size, canvas, colour, toggleIndex, debug }) => {
   const tileSize = CANVAS_SIZE / size;
   const tiles = generateTiles(size, tileSize);
+  const [uploadStatus, uploadFile] = useUploadFile();
 
   return (
     <div className="relative ma0 w-100">
@@ -41,11 +51,18 @@ export const MeshGrid = ({ size, canvas, colour, toggleIndex, debug }) => {
       <figcaption className="gray sans-serif f7 fw5 mt2 flex items-center">
         {size}x{size} Rangle mesh grid.
         <Button
+          as="button"
           className="ml-auto"
+          style={{ minWidth: '6rem' }}
           download="geometric-abstraction.svg"
-          href={svgDataUri(canvas, size)}
+          onClick={() => {
+            uploadFile(
+              svgDataUri(canvas, size),
+              `${size}x${size}-${new Date().getTime()}.svg`,
+            );
+          }}
         >
-          Download SVG
+          {buttonLabel(uploadStatus)}
         </Button>
       </figcaption>
     </div>
