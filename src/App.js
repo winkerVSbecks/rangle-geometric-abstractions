@@ -1,29 +1,8 @@
 import React, { useState } from 'react';
-import Amplify, { Auth, Storage } from 'aws-amplify';
-import { withAuthenticator } from 'aws-amplify-react';
-
-import awsmobile from './aws-exports';
 import { GeometricAbstractionsCreator } from './GeometricAbstractionsCreator';
 import { Navigation } from './Navigation';
 import { SkipNavLink, SkipNavContent } from '@reach/skip-nav';
 import '@reach/skip-nav/styles.css';
-import { Gallery } from './Gallery';
-
-Amplify.configure(awsmobile);
-Storage.configure({
-  level: 'private',
-});
-
-// // Delete all files
-// Storage.list('', { level: 'private' }).then(result => {
-//   console.log(result);
-
-//   result.map(({ key }) => {
-//     Storage.remove(key, { level: 'private' })
-//       .then(result => console.log(result))
-//       .catch(err => console.log(err));
-//   });
-// });
 
 const App = props => {
   const [route, setRoute] = useState('Home');
@@ -35,9 +14,9 @@ const App = props => {
         <Navigation
           signedIn={props.authState === 'signedIn'}
           signOut={() => {
-            Auth.signOut()
-              .then(data => console.log(data))
-              .catch(err => console.log(err));
+            // Auth.signOut()
+            //   .then(data => console.log(data))
+            //   .catch(err => console.log(err));
           }}
           goTo={route === 'Home' ? 'Gallery' : 'Home'}
           toggleRoute={() => {
@@ -46,11 +25,15 @@ const App = props => {
           }}
         />
         <SkipNavContent>
-          {route === 'Home' ? <GeometricAbstractionsCreator /> : <Gallery />}
+          {route === 'Home' ? (
+            <GeometricAbstractionsCreator />
+          ) : (
+            <div>Gallery</div>
+          )}
         </SkipNavContent>
       </div>
     </React.Fragment>
   );
 };
 
-export default withAuthenticator(App, false);
+export default App;
