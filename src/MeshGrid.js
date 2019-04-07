@@ -44,7 +44,7 @@ export const MeshGrid = ({ size, canvas, colour, toggleIndex, debug }) => {
           className="ml-auto"
           style={{ minWidth: '6rem' }}
           download={`${size}x${size}-${new Date().getTime()}.svg`}
-          href={() => svgDataUri(canvas, size)}
+          href={svgDataUri(canvas, size)}
         >
           Download SVG
         </Button>
