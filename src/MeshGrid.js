@@ -42,8 +42,9 @@ export const MeshGrid = ({ size, canvas, colour, toggleIndex, debug }) => {
         {size}x{size} Rangle mesh grid.
         <Button
           className="ml-auto"
-          download="geometric-abstraction.svg"
-          href={svgDataUri(canvas, size)}
+          style={{ minWidth: '6rem' }}
+          download={`${size}x${size}-${new Date().getTime()}.svg`}
+          href={() => svgDataUri(canvas, size)}
         >
           Download SVG
         </Button>

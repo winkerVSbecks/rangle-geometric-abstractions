@@ -21,9 +21,12 @@ export const svgDataUri = (canvas, size) => {
   const svgString = `
   <svg
     xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
     view-box="-1 -1 ${960 + 2} ${960 + 2}"
     fill="none"
     stroke="none"
+    width="960px"
+    height="960px"
   >
     ${tiles.map(
       (tile, idx) => `

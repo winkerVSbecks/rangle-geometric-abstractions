@@ -16,7 +16,7 @@ const ShadeInput = styled.input.attrs({
   background-color: ${props => props.value};
 
   @media screen and (min-width: 30em) {
-    height: ${props => props.size}rem;
+    height: ${props => props.size * 0.8}rem;
   }
 
   &:checked {

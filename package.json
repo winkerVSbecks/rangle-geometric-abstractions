@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@reach/skip-nav": "^0.1.2",
+    "buffer": "^5.2.1",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-pose": "^4.0.8",
