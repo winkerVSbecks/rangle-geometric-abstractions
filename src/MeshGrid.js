@@ -1,7 +1,7 @@
 import React from 'react';
 import { generateTiles, CANVAS_SIZE } from './tiles';
 import { Button } from './Primitives';
-import { svgDataUri } from './tiles';
+import { svgDataUri, generateSvgString } from './tiles';
 
 export const MeshGrid = ({ size, canvas, colour, toggleIndex, debug }) => {
   const tileSize = CANVAS_SIZE / size;
@@ -42,11 +42,24 @@ export const MeshGrid = ({ size, canvas, colour, toggleIndex, debug }) => {
         {size}x{size} Rangle mesh grid.
         <Button
           className="ml-auto"
-          style={{ minWidth: '6rem' }}
+          title="Download Raw SVG"
+          style={{ minWidth: '5rem' }}
           download={`${size}x${size}-${new Date().getTime()}.svg`}
           href={svgDataUri(canvas, size)}
         >
-          Download SVG
+          Raw
+        </Button>
+        <Button
+          className="ml2"
+          title="Download Optimized SVG"
+          style={{ minWidth: '5rem' }}
+          target="_blank"
+          href={`http://localhost:3000/.netlify/functions/convert?svgString=${generateSvgString(
+            canvas,
+            size,
+          )}`}
+        >
+          Optimized
         </Button>
       </figcaption>
     </div>

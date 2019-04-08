@@ -20,19 +20,17 @@ export function generateTiles(gridSize, tileSize) {
 
 export const CANVAS_SIZE = 960;
 
-export const svgDataUri = (canvas, size) => {
+export const generateSvgString = (canvas, size) => {
   const tileSize = CANVAS_SIZE / size;
   const tiles = generateTiles(size, tileSize);
 
-  const svgString = `
+  return `
   <svg
+    viewBox="-1 -1 ${960 + 2} ${960 + 2}"
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
-    view-box="-1 -1 ${960 + 2} ${960 + 2}"
     fill="none"
     stroke="none"
-    width="960px"
-    height="960px"
   >
     ${tiles.map(
       (tile, idx) => `
@@ -43,6 +41,9 @@ export const svgDataUri = (canvas, size) => {
     `,
     )}
   </svg>`.replace(/(\r\n|\n|\r)/gm, '');
+};
 
+export const svgDataUri = (canvas, size) => {
+  const svgString = generateSvgString(canvas, size);
   return `data:image/svg+xml;base64,${btoa(svgString)}`;
 };

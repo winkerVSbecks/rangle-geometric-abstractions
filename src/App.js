@@ -13,23 +13,14 @@ const App = props => {
       <div>
         <Navigation
           signedIn={props.authState === 'signedIn'}
-          signOut={() => {
-            // Auth.signOut()
-            //   .then(data => console.log(data))
-            //   .catch(err => console.log(err));
-          }}
-          goTo={route === 'Home' ? 'Gallery' : 'Home'}
+          signOut={() => {}}
           toggleRoute={() => {
             if (route === 'Home') setRoute('Gallery');
             if (route === 'Gallery') setRoute('Home');
           }}
         />
         <SkipNavContent>
-          {route === 'Home' ? (
-            <GeometricAbstractionsCreator />
-          ) : (
-            <div>Gallery</div>
-          )}
+          <GeometricAbstractionsCreator />
         </SkipNavContent>
       </div>
     </React.Fragment>
