@@ -1,5 +1,11 @@
-const p1 = (x, y, s) => ['M', x * s, y * s + s, 'v', -s, 'h', s, 'z'].join(' ');
-const p2 = (x, y, s) => ['M', x * s + s, y * s, 'v', s, 'h', -s, 'z'].join(' ');
+const p1 = (x, y, s) =>
+  ['M', x * s, y * s + s, 'v', -s, 'h', s, 'z']
+    .map(v => (typeof v === 'number' ? v.toFixed(3) : v))
+    .join(' ');
+const p2 = (x, y, s) =>
+  ['M', x * s + s, y * s, 'v', s, 'h', -s, 'z']
+    .map(v => (typeof v === 'number' ? v.toFixed(3) : v))
+    .join(' ');
 
 const tilesFor = (gridSize, tileSize) =>
   Array.from(Array(gridSize * gridSize).keys()).map(idx => {
