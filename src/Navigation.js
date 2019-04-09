@@ -1,6 +1,12 @@
 import React from 'react';
 
-export const Navigation = ({ signedIn, signOut, goTo, toggleRoute }) => (
+export const Navigation = ({
+  signedIn,
+  signOut,
+  signIn,
+  goTo,
+  toggleRoute,
+}) => (
   <nav
     className="flex justify-between bb b--white-10 sans-serif"
     style={{ backgroundColor: '#262626' }}
@@ -21,12 +27,19 @@ export const Navigation = ({ signedIn, signOut, goTo, toggleRoute }) => (
           {goTo}
         </button>
       )}
-      {signedIn && (
+      {signedIn ? (
         <button
           className="bg-transparent f6 dib white dim pv2 ph4 br0 ba b--white-60"
           onClick={signOut}
         >
           Sign Out
+        </button>
+      ) : (
+        <button
+          className="bg-transparent f6 dib white dim pv2 ph4 br0 ba b--white-60"
+          onClick={signIn}
+        >
+          Sign In
         </button>
       )}
     </div>
