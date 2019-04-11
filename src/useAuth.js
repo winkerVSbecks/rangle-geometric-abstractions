@@ -29,34 +29,3 @@ export function useAuth() {
 
   return [isAuthenticated, signIn, signOut, user];
 }
-
-// netlifyIdentity.on('login', user => {
-//   netlifyAuth.isAuthenticated = true;
-//   netlifyAuth.user = user;
-// });
-
-// netlifyIdentity.on('logout', user => {
-//   netlifyAuth.isAuthenticated = true;
-//   netlifyAuth.user = null;
-// });
-
-// export const netlifyAuth = {
-//   isAuthenticated: false,
-//   user: null,
-//   authenticate(callback) {
-//     this.isAuthenticated = true;
-//     netlifyIdentity.open();
-//     netlifyIdentity.on('login', user => {
-//       this.user = user;
-//       callback(user);
-//     });
-//   },
-//   signout(callback) {
-//     this.isAuthenticated = false;
-//     netlifyIdentity.logout();
-//     netlifyIdentity.on('logout', () => {
-//       this.user = null;
-//       callback();
-//     });
-//   },
-// };
