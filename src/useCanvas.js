@@ -3,15 +3,17 @@ import colours from './colours';
 const a = colours.red[0].value;
 const b = colours.red[1].value;
 const c = colours.red[2].value;
+const d = colours.red[3].value;
+const w = '#fff';
 
 // prettier-ignore
 const initialState6x6 = [
-  c, c, c, c, c, c, c, c, c, c, c, c,
-  c, c, c, c, c, c, c, c, c, c, c, c,
-  c, c, c, c, c, c, c, c, c, c, c, c,
-  c, c, c, c, c, c, c, c, c, c, c, c,
-  b, b, b, b, b, b, b, b, b, b, b, b,
-  a, a, a, a, a, a, a, a, a, a, a, a,
+  w, w, w, w, w, w, w, w, w, w, w, w,
+  w, w, w, w, w, w, c, c, c, c, w, w,
+  w, w, w, w, a, a, a, a, c, c, w, w,
+  w, w, d, d, a, a, a, a, c, c, w, w,
+  w, w, d, d, a, a, a, a, c, c, w, w,
+  w, w, w, w, w, w, w, w, w, w, w, w,
 ];
 
 // prettier-ignore
