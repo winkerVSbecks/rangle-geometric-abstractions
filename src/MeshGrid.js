@@ -54,7 +54,7 @@ export const MeshGrid = ({ size, canvas, colour, toggleIndex, debug }) => {
           title="Download Optimized SVG"
           style={{ minWidth: '5rem' }}
           target="_blank"
-          href={`http://localhost:3000/.netlify/functions/convert?svgString=${generateSvgString(
+          href={`/.netlify/functions/convert?svgString=${generateSvgString(
             canvas,
             size,
           )}`}
